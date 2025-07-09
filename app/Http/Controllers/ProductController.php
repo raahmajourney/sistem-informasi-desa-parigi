@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Product;
+
+class ProductController extends Controller
+{
+
+    public function index()
+{
+    $products = Product::latest()->get();
+    return view('dashboard.produk', compact('products'));
+}
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'contact_link' => 'nullable|url',
+        'image' => 'nullable|image|max:2048',
+    ]);
+
+    if ($request->hasFile('image')) {
+        $validated['image'] = $request->file('image')->store('produk', 'public');
+    }
+
+    $validated['created_by'] = Auth::id();
+
+    Product::create($validated);
+
+    return back()->with('success', 'Produk berhasil ditambahkan.');
+}
+
+
+}
