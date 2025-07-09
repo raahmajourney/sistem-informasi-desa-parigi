@@ -8,11 +8,25 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <body class="bg-gray-100 font-sans antialiased">
 
-<div class="max-w-7xl mx-auto pt-5 pb-10 px-4">
+    <div class="max-w-7xl mx-auto pt-5 pb-10 px-4">
+        @if(session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil',
+                text: '{{ session('success') }}',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        </script>
+    @endif
+
       {{-- Tombol Kembali ke Home --}}
     <div class="flex justify-end mb-4">
         <a href="{{ route('home') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition">
@@ -51,26 +65,44 @@
         <th class="px-4 py-3">Aksi</th>
     </tr>
 </thead>
-            <tbody class="divide-y divide-gray-200">
-    @foreach ($products as $product)
-    <tr>
-        <td class="px-4 py-3">{{ $product->title }}</td>
-        <td class="px-4 py-3">{{ $product->description }}</td>
-        <td class="px-4 py-3">Rp{{ number_format($product->price, 0, ',', '.') }}</td>
-        <td class="px-4 py-3">
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="Produk" class="w-16 h-16 object-cover rounded">
-            @else
-                <span class="text-gray-400 text-sm italic">Tidak ada gambar</span>
-            @endif
-        </td>
-        <td class="px-4 py-3 space-x-2">
-            <button class="text-yellow-500 hover:text-yellow-600 text-sm font-medium">Edit</button>
-            <button class="text-red-500 hover:text-red-600 text-sm font-medium">Hapus</button>
-        </td>
-    </tr>
-    @endforeach
-</tbody>
+
+        <tbody class="divide-y divide-gray-200">
+            @foreach ($products as $product)
+            <tr>
+                <td class="px-4 py-3">{{ $product->title }}</td>
+                <td class="px-4 py-3">{{ $product->description }}</td>
+                <td class="px-4 py-3">Rp{{ number_format($product->price, 0, ',', '.') }}</td>
+                <td class="px-4 py-3">
+                    @if($product->image)
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="Produk" class="w-16 h-16 object-cover rounded">
+                    @else
+                        <span class="text-gray-400 text-sm italic">Tidak ada gambar</span>
+                    @endif
+                </td>
+            
+                    <td class="px-4 py-2 space-x-2">
+
+                <a href="{{ route('produk.edit', $product) }}"class="text-yellow-600 hover:underline text-sm font-medium inline-flex items-center space-x-1">
+                    <i class="fas fa-edit"></i>
+                    <span>Edit</span>
+                </a>
+
+
+                <form action="{{ route('produk.destroy', $product) }}" method="POST" class="inline delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="button"
+                        class="delete-button text-red-600 hover:underline text-sm font-medium inline-flex items-center space-x-1"
+                        data-title="{{ $product->title }}">
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Hapus</span>
+                    </button>
+                </form>
+
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
 
             </table>
         </div>
@@ -125,6 +157,34 @@
         });
     });
 </script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    document.querySelectorAll('.delete-button').forEach(button => {
+        button.addEventListener('click', function () {
+            const form = this.closest('form');
+            const title = this.getAttribute('data-title') || 'produk';
+
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: `Produk "${title}" akan dihapus secara permanen.`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#e3342f',
+                cancelButtonColor: '#6c757d',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
+
 
 </body>
 </html>
