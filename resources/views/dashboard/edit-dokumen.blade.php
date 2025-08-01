@@ -37,16 +37,10 @@
         </div>
 
         <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700">File Saat Ini</label>
-            <a href="{{ asset('storage/' . $dokumen->file_path) }}" target="_blank" class="text-blue-600 hover:underline">
-                {{ basename($dokumen->file_path) }}
-            </a>
+            <label for="form_link" class="block text-sm font-medium text-gray-700 mb-1">Tautan Form (Google Form)</label>
+            <input type="url" name="form_link" id="form_link" required class="w-full border border-gray-300 rounded-lg px-3 py-2">
         </div>
-
-        <div class="mb-4">
-            <label for="file" class="block text-sm font-medium text-gray-700">Ganti File (Opsional)</label>
-            <input type="file" name="file" id="file" accept=".pdf,.doc,.docx" class="w-full">
-        </div>
+     
 
         <div class="flex justify-end">
             <a href="{{ route('dashboard.section', 'dokumen') }}" class="px-4 py-2 bg-gray-300 rounded-lg mr-2">Batal</a>

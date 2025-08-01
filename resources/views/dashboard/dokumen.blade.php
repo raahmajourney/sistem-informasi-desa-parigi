@@ -73,11 +73,12 @@
                         <td class="px-4 py-3">{{ $dokumen->title }}</td>
                          <td class="px-4 py-3 text-gray-600">{{ $dokumen->description }}</td>
                         <td class="px-4 py-3">
-                            <a href="{{ asset('storage/' . $dokumen->file_path) }}" target="_blank"
-                               class="text-indigo-600 hover:underline text-sm font-medium inline-flex items-center space-x-1">
-                                <i class="fas fa-file-alt"></i><span>Lihat File</span>
+                            <a href="{{ $dokumen->form_link }}" target="_blank"
+                            class="text-indigo-600 hover:underline text-sm font-medium inline-flex items-center space-x-1">
+                                <i class="fas fa-link"></i><span>Lihat Form</span>
                             </a>
                         </td>
+
                         <td class="px-4 py-3 space-x-3">
                             <!-- Tambahkan tombol edit jika diperlukan -->
 
@@ -109,25 +110,26 @@
 <div id="modalTambah" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
     <div class="bg-white rounded-xl shadow-lg max-w-md w-full p-6 relative">
         <h3 class="text-lg font-semibold mb-4 text-gray-800">Tambah Surat Baru</h3>
-        <form action="{{ route('dokumen.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-4">
-                <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Judul Surat</label>
-                <input type="text" name="title" id="title" required class="w-full border border-gray-300 rounded-lg px-3 py-2">
-            </div>
-            <div class="mb-4">
-                <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
-                <textarea name="description" id="description" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2"></textarea>
-            </div>
-            <div class="mb-4">
-                <label for="file" class="block text-sm font-medium text-gray-700 mb-1">Unggah File</label>
-                <input type="file" name="file" id="file" accept=".pdf,.doc,.docx" required class="w-full">
-            </div>
-            <div class="flex justify-end mt-6 gap-2">
-                <button type="button" onclick="tutupModal()" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 text-sm">Batal</button>
-                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">Simpan</button>
-            </div>
-        </form>
+    <form action="{{ route('dokumen.store') }}" method="POST">
+        @csrf
+        <div class="mb-4">
+            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">Judul Surat</label>
+            <input type="text" name="title" id="title" required class="w-full border border-gray-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="mb-4">
+            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">Deskripsi</label>
+            <textarea name="description" id="description" rows="3" class="w-full border border-gray-300 rounded-lg px-3 py-2"></textarea>
+        </div>
+        <div class="mb-4">
+            <label for="form_link" class="block text-sm font-medium text-gray-700 mb-1">Tautan Form (Google Form)</label>
+            <input type="url" name="form_link" id="form_link" required class="w-full border border-gray-300 rounded-lg px-3 py-2">
+        </div>
+        <div class="flex justify-end mt-6 gap-2">
+            <button type="button" onclick="tutupModal()" class="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400 text-sm">Batal</button>
+            <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 text-sm">Simpan</button>
+        </div>
+    </form>
+
         <button onclick="tutupModal()" class="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-lg">&times;</button>
     </div>
 </div>

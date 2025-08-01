@@ -12,7 +12,7 @@ return new class extends Migration
         $table->id();
         $table->string('title');
         $table->text('description')->nullable();
-        $table->string('file_path');
+        $table->string('form_link')->nullable();
         $table->unsignedBigInteger('created_by');
         $table->timestamps();
 

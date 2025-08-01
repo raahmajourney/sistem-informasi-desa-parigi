@@ -20,6 +20,8 @@
                 @include('dashboard.produk')
             @elseif ($section === 'dokumen')
                 @include('dashboard.dokumen')
+            @elseif ($section === 'gallery')
+                @include('dashboard.gallery')
             @else
                 <p class="text-red-500">Halaman tidak ditemukan.</p>
             @endif

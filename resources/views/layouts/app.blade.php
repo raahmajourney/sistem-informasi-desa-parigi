@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- Meta Description -->
+  <meta name="description" content="Website resmi Desa Parigi, Tinggimoncong, Kabupaten Gowa. Menyediakan informasi profil desa, produk unggulan, dan dokumen penting.">
+
+  <!-- Meta Keywords (tidak terlalu penting lagi, tapi bisa digunakan) -->
+  <meta name="keywords" content="Desa Parigi, Tinggimoncong, Gowa, Produk Unggulan, Pemerintah Desa, Sulawesi Selatan">
+
+  <!-- Meta Author -->
+  <meta name="author" content="Desa Parigi">
+
+  <!-- Open Graph untuk sosial media -->
+  <meta property="og:title" content="Desa Parigi - Tinggimoncong, Gowa">
+  <meta property="og:description" content="Informasi seputar Desa Parigi: profil, produk unggulan, galeri, dan kontak.">
+  <meta property="og:image" content="URL_LOGO_DESA">
+  <meta property="og:url" content="https://desaparigi.id">
+  <meta property="og:type" content="website">
+
+
   @vite('resources/css/app.css')
   <title>Desa Parigi</title>
 
@@ -13,34 +31,85 @@
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     crossorigin=""
   />
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-pVZgMpldcAWU+4U7jKLn2eW+9XfRWT5JKZvdDklIXXaFetZKr85SG1Uj1ApXaVZnAWBkKwzImQDbOCS8g1B5cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <!-- Header & Hero Section -->
-<div class="bg-white">
+<div >
   
-  <header class="fixed inset-x-0 top-0 z-50">
-    <nav id="navbar" class="flex items-center justify-between p-6 lg:px-8 bg-transparent transition-colors duration-500" aria-label="Global">
-      <div class="flex lg:flex-1 items-center space-x-4">
-        <a href="#" class="-m-1.5 p-1.5 flex items-center">
-          <span class="sr-only">Parigi</span>
-          <img class="h-20 w-auto" src="/images/logo.png" alt="Parigi" />
+<header class="fixed inset-x-0 top-0 z-50">
+  <nav id="navbar"
+     class="flex items-center justify-between py-3 px-4 lg:px-8 transition-colors duration-500
+     {{ Route::currentRouteName() === 'home' ? 'bg-transparent lg:text-white' : 'bg-sky-500 text-white shadow-md' }}"
+     aria-label="Global">
 
-        </a>
-        <div class="flex flex-col leading-tight">
-          <span class="text-lg font-bold text-gray-900">Parigi</span>
-          <span class="text-sm text-gray-700">Tinggimoncong, Gowa</span>
-        </div>
+    <div class="flex lg:flex-1 items-center space-x-4">
+      <img class="h-12 w-auto" src="/images/logo.png" alt="Parigi" />
+      <div class="flex flex-col leading-tight">
+        <span class="text-lg font-bold">Parigi</span>
+        <span class="text-sm">Tinggimoncong, Gowa</span>
       </div>
-      <div class="hidden lg:flex items-center gap-x-12">
-        <a href="{{ route('home') }}" class="text-sm font-semibold text-gray-900">Home</a>
-        <a href="#" class="text-sm font-semibold text-gray-900">Profile</a>
-        <a href="{{ route('products') }}" class="text-sm font-semibold text-gray-900">Product</a>
-        <a href="{{ route('documents') }}" class="text-sm font-semibold text-gray-900">Download</a>
-        <a href="{{ route('login') }}" class="text-sm font-semibold text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
-      </div>
-    </nav>
-  </header>
+    </div>
+
+    <!-- Tombol drawer-->
+    <div class="lg:hidden">
+      <button id="drawer-button" class="drawer-button text-black  p-2 rounded-md focus:outline-none text-2xl">
+        ☰
+      </button>
+    </div>
+
+
+
+    <!-- Menu utama (desktop) -->
+   <div class="hidden lg:flex items-center gap-x-8">
+  <a href="{{ route('home') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'home' ? 'text-sky-600 underline' : '' }}">
+     Home
+  </a>
+  <a href="{{ route('profile') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'profile' ? 'text-sky-600 underline' : '' }}">
+     Profile
+  </a>
+  <a href="{{ route('products') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'products' ? 'text-sky-600 underline' : '' }}">
+     Product
+  </a>
+  <a href="{{ route('gallery') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'gallery' ? 'text-sky-600 underline' : '' }}">
+     Gallery
+  </a>
+  <a href="{{ route('documents') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'documents' ? 'text-sky-600 underline' : '' }}">
+     Dokumen
+  </a>
+  <a href="{{ route('education') }}"
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'education' ? 'text-sky-600 underline' : '' }}">
+     Education
+  </a>
+</div>
+
+  </nav>
+
+<!-- Menu responsif (mobile) -->
+<div id="mobileMenu" class="hidden flex-col bg-sky-500 text-black lg:hidden p-4 space-y-2">
+  <a href="{{ route('home') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Home</a>
+  <a href="{{ route('profile') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Profile</a>
+  <a href="{{ route('products') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Product</a>
+  <a href="{{ route('gallery') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Gallery</a>
+  <a href="{{ route('documents') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Dokumen</a>
+  <a href="{{ route('education') }}" class="block text-sm font-semibold px-4 py-2 hover:bg-sky-600 rounded-md">Education</a>
+</div>
+
+
+
+</header>
+
 
   <main class="{{ Route::currentRouteName() === 'home' ? '' : 'pt-20' }}">
     @yield('content')
@@ -57,7 +126,7 @@
       <p class="text-sm leading-relaxed">
         Tinggimoncong, Kabupaten Gowa<br/>
         Sulawesi Selatan, Indonesia<br/>
-        Kode Pos: 92174
+        Kode Pos:  92174
       </p>
     </div>
 
@@ -65,10 +134,14 @@
     <div>
       <h4 class="text-xl font-semibold mb-4">Navigasi</h4>
       <ul class="space-y-2 text-sm">
-        <li><a href="#" class="hover:underline">Beranda</a></li>
-        <li><a href="#" class="hover:underline">Profil Desa</a></li>
-        <li><a href="#" class="hover:underline">Produk Unggulan</a></li>
-        <li><a href="#" class="hover:underline">Kontak</a></li>
+        <li><a href="{{ route('home') }}" class="hover:underline">Home</a></li>
+        <li><a href="{{ route('profile') }}" class="hover:underline">Profil Desa</a></li>
+        <li><a href="{{ route('products') }}" class="hover:underline">Produk Unggulan</a></li>
+        <li><a href="{{ route('documents') }}" class="hover:underline">Dokumen</a></li>
+        <li><a href="{{ route('gallery') }}" class="hover:underline">Gallery Desa</a></li>
+        <li><a href="{{ route('education') }}" class="hover:underline">Edukasi</a></li>
+        <li><a href="{{ route('about') }}" class="hover:underline">Tentang</a></li>
+        <li><a href="{{ route('login') }}" class="hover:underline">Dashboard Admin</a></li>
       </ul>
     </div>
 
@@ -76,16 +149,15 @@
     <div>
       <h4 class="text-xl font-semibold mb-4">Kontak</h4>
       <ul class="space-y-2 text-sm">
-        <li>Email: <a href="mailto:info@desaparigi.id" class="hover:underline">info@desaparigi.id</a></li>
-        <li>Telepon: 0821-1234-5678</li>
-        <li>Facebook: <a href="#" class="hover:underline">fb.com/desaparigi</a></li>
-        <li>Instagram: <a href="#" class="hover:underline">@desaparigi</a></li>
+        <li>Email: <a href="mailto:info@desaparigi.id" class="hover:underline">infodesaparigi@gmail.com</a></li>
+        <li>Telepon: 085772389664</li>
+        <li>Instagram: <a href="https://www.instagram.com/pemdesdesaparigi?igsh=dG55YTV0cmhnMno2" class="hover:underline">@pemdesdesaparigi</a></li>
       </ul>
     </div>
   </div>
 
   <!-- Copyright -->
-  <div class="bg-gray-800 text-center py-4 text-sm text-gray-400">
+  <div class="bg-gray-900 text-gray-200 text-center py-4 text-sm">
     &copy; 2025 Desa Parigi
   </div>
 </footer>
@@ -94,17 +166,29 @@
 <!-- Leaflet JS (tanpa integrity) -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 
-<!-- Script Navbar -->
 <script>
-  window.addEventListener('scroll', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const navbar = document.getElementById('navbar');
-    if (window.scrollY > 10) {
-      navbar.classList.remove('bg-transparent');
-      navbar.classList.add('bg-emerald-200', 'shadow-md');
-    } else {
-      navbar.classList.remove('bg-emerald-200', 'shadow-md');
-      navbar.classList.add('bg-transparent');
+    const isHome = "{{ Route::currentRouteName() === 'home' }}" === "1";
+
+    if (isHome) {
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 10) {
+          navbar.classList.remove('bg-transparent');
+          navbar.classList.add('bg-sky-500', 'shadow-md');
+        } else {
+          navbar.classList.remove('bg-sky-500', 'shadow-md');
+          navbar.classList.add('bg-transparent');
+        }
+      });
     }
+
+    // Toggle menu mobile
+    const drawerButton = document.getElementById('drawer-button');
+    const mobileMenu = document.getElementById('mobileMenu');
+    drawerButton?.addEventListener('click', function () {
+      mobileMenu?.classList.toggle('hidden');
+    });
   });
 </script>
 

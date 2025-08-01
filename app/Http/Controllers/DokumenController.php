@@ -19,38 +19,32 @@ class DokumenController extends Controller
         ]);
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'file' => 'required|file|mimes:pdf,doc,docx|max:2048',
-        ]);
+  public function store(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'form_link' => 'required|url|max:2048',
+    ]);
 
-        $filePath = $request->file('file')->store('surat', 'public');
+    Dokumen::create([
+        'title' => $request->title,
+        'description' => $request->description,
+        'form_link' => $request->form_link,
+        'created_by' => Auth::id(),
+    ]);
 
-        Dokumen::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'file_path' => $filePath,
-            'created_by' => Auth::id(), // pastikan user login
-        ]);
+    return redirect()->back()->with('success', 'Surat berhasil ditambahkan.');
+}
 
-        return redirect()->back()->with('success', 'Surat berhasil ditambahkan.');
-    }
+
 
     public function destroy(Dokumen $dokumen)
     {
-        // Hapus file fisik jika ada
-        if ($dokumen->file_path && Storage::disk('public')->exists($dokumen->file_path)) {
-            Storage::disk('public')->delete($dokumen->file_path);
-        }
-
-        // Hapus data dari database
         $dokumen->delete();
-
         return redirect()->back()->with('success', 'Surat berhasil dihapus.');
     }
+
 
 
     public function edit(Dokumen $dokumen)
@@ -58,31 +52,23 @@ class DokumenController extends Controller
         return view('dashboard.edit-dokumen', compact('dokumen'));
     }
 
-    public function update(Request $request, Dokumen $dokumen)
+   public function update(Request $request, Dokumen $dokumen)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'file' => 'nullable|file|mimes:pdf,doc,docx|max:2048',
+            'form_link' => 'required|url|max:2048',
         ]);
 
-        // Update file jika diunggah
-        if ($request->hasFile('file')) {
-            if ($dokumen->file_path && Storage::disk('public')->exists($dokumen->file_path)) {
-                Storage::disk('public')->delete($dokumen->file_path);
-            }
-            $dokumen->file_path = $request->file('file')->store('surat', 'public');
-        }
-
-        // Update data lainnya
         $dokumen->update([
             'title' => $request->title,
             'description' => $request->description,
-            'file_path' => $dokumen->file_path,
+            'form_link' => $request->form_link,
         ]);
 
-        return redirect()->route('dashboard.section', 'dokumen')->with('success', 'Surat berhasil diperbarui.');
+        return redirect()->route('dashboard.section', 'dokumen')->with('success', 'Link surat berhasil diperbarui.');
     }
+
 
 
 }

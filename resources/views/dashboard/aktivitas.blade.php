@@ -38,12 +38,24 @@
 
 <div class="max-w-7xl mx-auto pt-5 pb-8 px-4">
 
-    {{-- Tombol Kembali ke Home --}}
-    <div class="flex justify-end mb-4">
-        <a href="{{ route('home') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition">
-            Kembali ke Home
-        </a>
-    </div>
+    <div class="flex justify-end gap-3 max-w-7xl mx-auto mt-4 px-4">
+    <!-- Tombol Kembali ke Home -->
+    <a href="{{ route('home') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition flex items-center gap-1">
+        <i class="fas fa-home"></i>
+        Home
+    </a>
+
+    <!-- Tombol Logout -->
+    <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Yakin ingin logout?')">
+        @csrf
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition flex items-center gap-1">
+            <i class="fas fa-sign-out-alt"></i>
+            Logout
+        </button>
+    </form>
+</div>
+
+    
 
     <h1 class="text-3xl font-bold mb-8 text-gray-800">Dashboard</h1>
 
@@ -52,6 +64,7 @@
         <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-700 font-medium hover:underline underline">Aktivitas Desa</a>
         <a href="{{ route('dashboard.section', 'produk') }}" class="text-green-700 font-medium hover:underline">Produk UMKM</a>
         <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
+        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
     </nav>
 
     {{-- Aktivitas --}}
