@@ -73,35 +73,38 @@
 <section class="bg-sky-50 py-20 px-6 lg:px-16">
   <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Parigi Update</h2>
   <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    @foreach ($activities as $activity)
-    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6">
-      <img src="{{ $activity->image ? asset('storage/' . $activity->image) : '/images/placeholder.jpg' }}" 
-           alt="Gambar Aktivitas" 
-           class="rounded-lg mb-4 w-full h-48 object-cover">
+@foreach ($activities as $index => $activity)
+    <div class="bg-white rounded-xl shadow hover:shadow-lg transition p-6 {{ $index >= 6 ? 'hidden more-updates' : '' }}">
+        <img src="{{ $activity->image ? asset('storage/' . $activity->image) : '/images/placeholder.jpg' }}" 
+            alt="Gambar Aktivitas" 
+            class="rounded-lg mb-4 w-full h-48 object-cover">
 
-      <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ $activity->title }}</h3>
-      <p class="text-gray-600 text-sm">{{ \Illuminate\Support\Str::limit($activity->content, 100) }}</p>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ $activity->title }}</h3>
+        <p class="text-gray-600 text-sm">{{ \Illuminate\Support\Str::limit($activity->content, 100) }}</p>
 
-      <span class="block mt-4 text-xs text-gray-400 flex items-center gap-1">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        {{ \Carbon\Carbon::parse($activity->activity_date)->format('d F Y') }}
-      </span>
+        <span class="block mt-4 text-xs text-gray-400 flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            {{ \Carbon\Carbon::parse($activity->activity_date)->format('d F Y') }}
+        </span>
 
-      <a href="{{ route('activity.detail', $activity->id) }}" class="inline-block mt-4 text-sky-700 text-sm font-medium hover:underline">
-      Baca Selengkapnya →
-    </a>
-
+        <a href="{{ route('activity.detail', $activity->id) }}" class="inline-block mt-4 text-sky-700 text-sm font-medium hover:underline">
+            Baca Selengkapnya →
+        </a>
     </div>
-    @endforeach
+@endforeach
+
   </div>
-  <div class="mt-12 text-center">
-    <a href="#" 
-       class="inline-block px-6 py-2 text-black font-semibold rounded-xl hover:bg-sky-300 transition">
+
+<div class="mt-12 text-center">
+    <button id="toggleUpdates" 
+            class="inline-block px-6 py-2 text-black font-semibold rounded-xl hover:bg-sky-300 transition">
         Lihat Semua Update
-    </a>
+    </button>
 </div>
+
+
 </section>
 
 
@@ -152,4 +155,25 @@
     once: true     // Animasi hanya jalan 1x
   });
 </script>
+
+<script>
+    const toggleButton = document.getElementById('toggleUpdates');
+    const hiddenUpdates = document.querySelectorAll('.more-updates');
+
+    toggleButton.addEventListener('click', function () {
+        let allVisible = true;
+
+        hiddenUpdates.forEach(el => {
+            el.classList.toggle('hidden');
+            if (el.classList.contains('hidden')) {
+                allVisible = false;
+            }
+        });
+
+        // Ubah teks tombol sesuai status
+        this.textContent = allVisible ? 'Lihat Semua Update' : 'Tampilkan Lebih Sedikit';
+    });
+</script>
+
+
 @endpush

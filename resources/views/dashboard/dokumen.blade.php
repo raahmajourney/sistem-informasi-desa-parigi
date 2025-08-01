@@ -45,7 +45,8 @@
     <nav class="bg-gray-50 border rounded-lg py-3 px-6 flex gap-6 mb-8 shadow-sm">
         <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-700 font-medium hover:underline {{ $section === 'aktivitas' ? 'underline font-bold' : '' }}">Aktivitas Desa</a>
         <a href="{{ route('dashboard.section', 'produk') }}" class="text-green-700 font-medium hover:underline {{ $section === 'produk' ? 'underline font-bold' : '' }}">Produk UMKM</a>
-        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline {{ $section === 'dokumen' ? 'underline font-bold' : '' }}">Surat Administrasi</a>
+        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline {{ $section === 'dokumen' ? 'underline font-bold' : '' }}">Surat Administrasi</a>        <a href="{{ route('dashboard.section', 'galeri') }}" class="text-indigo-700 font-medium hover:underline">Gallery</a>
+        <a href="#" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
     </nav>
 
     <!-- Dokumen -->

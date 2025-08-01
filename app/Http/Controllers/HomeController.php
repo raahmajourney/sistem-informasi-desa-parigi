@@ -11,10 +11,11 @@ use App\Models\Gallery;
 class HomeController extends Controller
 {
     public function index()
-    {
-        $activities = Activity::latest()->take(6)->get(); 
-        return view('home', compact('activities'));
-    }
+{
+    $activities = Activity::latest()->get(); // Ambil semua aktivitas
+    return view('home', compact('activities'));
+}
+
 
     public function documents()
     {
@@ -27,7 +28,7 @@ class HomeController extends Controller
         $products = Product::latest()->get();
         return view('products', compact('products'));
     }
-    public function showProduct(Product $product)
+      public function showProduct(Product $product)
     {
         return view('products-detail', compact('product'));
     }
@@ -37,9 +38,9 @@ class HomeController extends Controller
         return view('activity-detail', compact('activity'));
     }
 
-    public function gallery()
+     public function gallery()
     {
-        $galleries = Gallery::latest()->get(); // Ambil semua galeri
+        $galleries = Gallery::latest()->get(); 
         return view('gallery', compact('galleries'));
     }
 }

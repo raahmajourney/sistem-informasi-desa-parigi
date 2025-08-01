@@ -43,13 +43,14 @@ Route::get('documents', [HomeController::class, 'documents'])->name('documents')
 Route::get('products', [HomeController::class, 'products'])->name('products');
 Route::get('products/{product}', [HomeController::class, 'showProduct'])->name('products.detail');
 Route::get('update/{activity}', [HomeController::class, 'showActivity'])->name('activity.detail');
+Route::get('galeri', [HomeController::class, 'gallery'])->name('gallery');
 
 
 
 // ✅ Protected Routes
 Route::middleware(['auth'])->group(function () {
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('dashboard/{section}', [DashboardController::class, 'section'])->name('dashboard.section');
 
@@ -67,8 +68,9 @@ Route::middleware(['auth'])->group(function () {
     ]);
 
     Route::prefix('dashboard')->group(function () {
-        Route::get('/section/{section}', [DashboardController::class, 'index'])->name('dashboard.section');
-        Route::post('/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+    
+        Route::post('galeri', [GalleryController::class, 'store'])->name('galeri.store');
+        Route::delete('galeri/{gallery}', [GalleryController::class, 'destroy'])->name('galeri.destroy');
     });
 
 });

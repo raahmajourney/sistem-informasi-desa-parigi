@@ -21,7 +21,7 @@ class ProductController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric', 
             'contact_link' => 'nullable|url',
             'image' => 'nullable|image|max:2048',
         ]);

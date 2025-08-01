@@ -64,7 +64,8 @@
         <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-700 font-medium hover:underline underline">Aktivitas Desa</a>
         <a href="{{ route('dashboard.section', 'produk') }}" class="text-green-700 font-medium hover:underline">Produk UMKM</a>
         <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
-        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
+        <a href="{{ route('dashboard.section', 'galeri') }}" class="text-indigo-700 font-medium hover:underline">Gallery</a>
+        <a href="#" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
     </nav>
 
     {{-- Aktivitas --}}

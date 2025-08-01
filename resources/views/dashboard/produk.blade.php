@@ -41,6 +41,9 @@
         <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-700 font-medium hover:underline">Aktivitas Desa</a>
         <a href="{{ route('dashboard.section', 'produk') }}" class="text-green-700 font-medium hover:underline">Produk UMKM</a>
         <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
+        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
+        <a href="{{ route('dashboard.section', 'galeri') }}" class="text-indigo-700 font-medium hover:underline">Gallery</a>
+        <a href="#" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
     </nav>
 
     {{-- Produk --}}
@@ -48,7 +51,7 @@
         <div class="flex justify-between items-center mb-5">
             <h2 class="text-xl font-semibold text-gray-800">Produk UMKM</h2>
             <button onclick="document.getElementById('modalProduk').classList.remove('hidden')" 
-                    class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700 transition">
+                    class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-sky-700 transition">
                 + Tambah Produk
             </button>
         </div>
@@ -140,7 +143,7 @@
                 <input type="file" name="image" class="w-full text-sm">
             </div>
             <div class="text-right">
-                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-700">
+                <button type="submit" class="bg-sky-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-sky-700">
                     Simpan
                 </button>
             </div>

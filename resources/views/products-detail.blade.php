@@ -25,7 +25,7 @@
 
         @if ($product->contact_link)
           <a href="{{ $product->contact_link }}" target="_blank"
-             class="inline-block px-5 py-3 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 transition">
+             class="inline-block px-5 py-3 bg-sky-600 text-white rounded-lg shadow hover:bg-emerald-700 transition">
             <i class="fas fa-phone-alt mr-2"></i> Hubungi Penjual
           </a>
         @endif

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Activity;
 use App\Models\Product;
 use App\Models\Dokumen;
+use App\Models\Gallery; 
 
 class DashboardController extends Controller
 {
@@ -26,6 +27,10 @@ class DashboardController extends Controller
         return view('dashboard.dokumen', compact('section', 'dokumens'));
     }
 
+        if ($section === 'galeri') {
+    $galleries = Gallery::latest()->get();
+    return view('dashboard.galeri', compact('section', 'galleries'));
+}
 
         // Default: kembalikan view dashboard.[section]
         return view('dashboard.' . $section);
