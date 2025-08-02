@@ -22,9 +22,10 @@
   <meta property="og:type" content="website">
 
 
-  @vite('resources/css/app.css')
+  
   <title>Desa Parigi</title>
 
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Leaflet CSS (tanpa integrity) -->
   <link
     rel="stylesheet"
@@ -37,6 +38,7 @@
 
   <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
 
@@ -69,27 +71,27 @@
     <!-- Menu utama (desktop) -->
    <div class="hidden lg:flex items-center gap-x-8">
   <a href="{{ route('home') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'home' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'home' ? 'text-sky-600' : '' }}">
      Home
   </a>
   <a href="{{ route('profile') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'profile' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'profile' ? 'text-indigo-600 underline' : '' }}">
      Profile
   </a>
   <a href="{{ route('products') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'products' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'products' ? 'text-indigo-600 underline' : '' }}">
      Product
   </a>
   <a href="{{ route('gallery') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'gallery' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'gallery' ? 'text-indigo-600 underline' : '' }}">
      Gallery
   </a>
   <a href="{{ route('documents') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'documents' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'documents' ? 'text-indigo-600 underline' : '' }}">
      Dokumen
   </a>
   <a href="{{ route('education') }}"
-     class="text-sm font-semibold {{ Route::currentRouteName() === 'education' ? 'text-sky-600 underline' : '' }}">
+     class="text-sm font-semibold {{ Route::currentRouteName() === 'education' ? 'text-indigo-600 underline' : '' }}">
      Education
   </a>
 </div>

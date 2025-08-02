@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DokumenController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\EducationController;
 
 // Public Routes
 
@@ -44,6 +45,8 @@ Route::get('products', [HomeController::class, 'products'])->name('products');
 Route::get('products/{product}', [HomeController::class, 'showProduct'])->name('products.detail');
 Route::get('update/{activity}', [HomeController::class, 'showActivity'])->name('activity.detail');
 Route::get('galeri', [HomeController::class, 'gallery'])->name('gallery');
+Route::get('education', [HomeController::class, 'education'])->name('education');
+
 
 
 
@@ -71,6 +74,13 @@ Route::middleware(['auth'])->group(function () {
     
         Route::post('galeri', [GalleryController::class, 'store'])->name('galeri.store');
         Route::delete('galeri/{gallery}', [GalleryController::class, 'destroy'])->name('galeri.destroy');
+        Route::get('galeri/{gallery}/edit', [GalleryController::class, 'edit'])->name('galeri.edit');
+        Route::put('galeri/{gallery}', [GalleryController::class, 'update'])->name('galeri.update');
+
+        Route::post('edukasi', [EducationController::class, 'store'])->name('edukasi.store');
+        Route::delete('edukasi/{education}', [EducationController::class, 'destroy'])->name('edukasi.destroy');
+        Route::get('edukasi/{education}/edit', [EducationController::class, 'edit'])->name('edukasi.edit');
+        Route::put('edukasi/{education}', [EducationController::class, 'update'])->name('edukasi.update');
     });
 
 });

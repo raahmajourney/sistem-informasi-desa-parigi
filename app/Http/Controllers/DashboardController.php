@@ -7,6 +7,7 @@ use App\Models\Activity;
 use App\Models\Product;
 use App\Models\Dokumen;
 use App\Models\Gallery; 
+use App\Models\Education; 
 
 class DashboardController extends Controller
 {
@@ -27,10 +28,15 @@ class DashboardController extends Controller
         return view('dashboard.dokumen', compact('section', 'dokumens'));
     }
 
-        if ($section === 'galeri') {
-    $galleries = Gallery::latest()->get();
-    return view('dashboard.galeri', compact('section', 'galleries'));
-}
+    if ($section === 'galeri') {
+        $galleries = Gallery::latest()->get();
+        return view('dashboard.galeri', compact('section', 'galleries'));
+    }
+
+     if ($section === 'edukasi') {
+            $educations = Education::latest()->get(); 
+            return view('dashboard.edukasi', compact('section', 'educations'));
+        }
 
         // Default: kembalikan view dashboard.[section]
         return view('dashboard.' . $section);

@@ -25,11 +25,19 @@
 <!-- Peta Desa Parigi -->
 <div class="relative mb-16">
   <h3 class="text-2xl font-semibold text-center text-sky-800 mb-6">Peta Lokasi Desa Parigi</h3>
-  
-  <div class="relative w-full h-[400px] rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-200">
-    <div id="map" class="absolute inset-0 z-0"></div>
+
+  <div class="relative w-full max-w-2xl h-[300px] mx-auto rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-200">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115056.56350763298!2d119.70914880164082!3d-5.234982678832615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbe952a8b4078dd%3A0xde993f047dc2c895!2sParigi%2C%20Tinggimoncong%2C%20Gowa%20Regency%2C%20South%20Sulawesi!5e1!3m2!1sen!2sid!4v1754094591151!5m2!1sen!2sid"
+      class="absolute top-0 left-0 w-full h-full border-0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </div>
 </div>
+
+
 
 
     <!-- Visi dan Misi (berdampingan) -->
@@ -114,7 +122,7 @@
 @push('scripts')
 <!-- Inisialisasi Leaflet -->
 <script>
-  const map = L.map('map').setView([-5.235064, 119.771115], 10);
+  const map = L.map('map').setView([-5.235064, 119.771115], 20);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -5,7 +5,7 @@
     <div class="max-w-5xl mx-auto">
         <!-- Judul Halaman -->
         <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">
-            <i class="fas fa-file-alt text-sky-600 mr-2"></i> layanan Dokumen Desa
+            <i class="fas fa-file-alt text-sky-600 mr-2"></i> Layanan Dokumen Desa
         </h2>
 
         <!-- List Dokumen -->

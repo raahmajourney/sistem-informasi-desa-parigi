@@ -27,23 +27,38 @@
         </script>
     @endif
 
-      {{-- Tombol Kembali ke Home --}}
-    <div class="flex justify-end mb-4">
-        <a href="{{ route('home') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition">
-            Kembali ke Home
-        </a>
+      <div class="flex justify-between items-start mb-5 mt-16">
+    <div class="flex flex-col mb-4">
+        <div class="text-sm text-gray-700 font-semibold flex items-center gap-1 mb-2">
+            <i class="fas fa-user"></i> {{ Auth::user()->name }}
+        </div>
+        <h1 class="text-3xl font-bold text-gray-800">Dashboard Produk</h1>
     </div>
 
-    <h1 class="text-3xl font-bold mb-8 text-gray-800">Dashboard</h1>
+    <!-- Kanan: Tombol Home & Logout -->
+    <div class="flex gap-3">
+        <a href="{{ route('home') }}" class="bg-gray-800 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700 transition flex items-center gap-1">
+            <i class="fas fa-home"></i>
+            Home
+        </a>
+
+        <form action="{{ route('logout') }}" method="POST" onsubmit="return confirm('Yakin ingin logout?')">
+            @csrf
+            <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition flex items-center gap-1">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </form>
+    </div>
+</div>
 
     {{-- Navigasi --}}
     <nav class="bg-gray-50 border rounded-lg py-3 px-6 flex gap-6 mb-8 shadow-sm">
-        <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-700 font-medium hover:underline">Aktivitas Desa</a>
-        <a href="{{ route('dashboard.section', 'produk') }}" class="text-green-700 font-medium hover:underline">Produk UMKM</a>
-        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
-        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-indigo-700 font-medium hover:underline">Surat Administrasi</a>
-        <a href="{{ route('dashboard.section', 'galeri') }}" class="text-indigo-700 font-medium hover:underline">Gallery</a>
-        <a href="#" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
+        <a href="{{ route('dashboard.section', 'aktivitas') }}" class="text-blue-600 font-medium hover:underline">Aktivitas Desa</a>
+        <a href="{{ route('dashboard.section', 'produk') }}" class="text-sky-700 font-medium hover:underline">Produk UMKM</a>
+        <a href="{{ route('dashboard.section', 'dokumen') }}" class="text-sky-400 font-medium hover:underline">Surat Administrasi</a>
+        <a href="{{ route('dashboard.section', 'galeri') }}" class="text-sky-500 font-medium hover:underline">Gallery</a>
+        <a href="{{ route('dashboard.section', 'edukasi') }}" class="text-indigo-700 font-medium hover:underline">Edukasi</a>
     </nav>
 
     {{-- Produk --}}

@@ -9,7 +9,7 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             @forelse ($galleries as $item)
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow hover:shadow-md transition">
+                <div class="bg-gray-50  overflow-hidden shadow hover:shadow-md transition">
                     @if ($item->type === 'image' && $item->file_path)
                         <img src="{{ asset('storage/' . $item->file_path) }}"
                              alt="{{ $item->title ?? 'Gambar Galeri' }}"
@@ -31,9 +31,6 @@
                         <h3 class="text-lg font-semibold text-gray-800 truncate">
                             {{ $item->title ?? 'Tanpa Judul' }}
                         </h3>
-                        <p class="text-sm text-gray-600 mt-1 line-clamp-2">
-                            {{ $item->description ?? 'Tanpa deskripsi.' }}
-                        </p>
                     </div>
                 </div>
             @empty

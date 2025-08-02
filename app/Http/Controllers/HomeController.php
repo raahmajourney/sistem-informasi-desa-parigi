@@ -7,6 +7,7 @@ use App\Models\Activity;
 use App\Models\Dokumen;
 use App\Models\Product;
 use App\Models\Gallery; 
+use App\Models\Education;
 
 class HomeController extends Controller
 {
@@ -43,4 +44,12 @@ class HomeController extends Controller
         $galleries = Gallery::latest()->get(); 
         return view('gallery', compact('galleries'));
     }
+
+    public function education()
+    {
+        $educations = Education::latest()->get();
+        return view('education', compact('educations'));
+    }
+
+
 }
