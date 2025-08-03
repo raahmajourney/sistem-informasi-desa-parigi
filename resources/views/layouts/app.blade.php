@@ -25,6 +25,9 @@
   
   <title>Desa Parigi</title>
 
+  <!-- Untuk .ico -->
+  <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Leaflet CSS (tanpa integrity) -->
   <link

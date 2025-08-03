@@ -8,7 +8,7 @@
   <div class="absolute inset-0 bg-black/40 z-10"></div>
   <div class="relative z-20 flex flex-col justify-center items-center h-full text-center text-white">
     <h1 class="text-4xl md:text-5xl font-bold drop-shadow-md">Produk Desa Parigi</h1>
-    <p class="mt-4 text-lg">Hasil karya warga Parigi untuk negeri</p>
+    <p class="mt-4 text-lg">Hasil karya warga Parigi</p>
   </div>
 </div>
 
