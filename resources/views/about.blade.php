@@ -18,7 +18,8 @@
       <div class="md:w-1/2 w-full">
         <h2 class="text-3xl font-bold text-gray-900 mb-4">Tentang Website Ini</h2>
         <p class="text-gray-700 text-lg leading-relaxed mb-6">
-          Website ini merupakan salah satu program kerja dari Kelompok Kuliah Kerja Nyata (KKN) Universitas Hasanuddin Angkatan 22 yang ditempatkan di Desa Parigi. Kami berkomitmen untuk turut berkontribusi dalam pembangunan desa dan pemberdayaan masyarakat melalui pemanfaatan teknologi informasi.
+          Website ini merupakan salah satu program kerja dari Kelompok KKNT UNIVERSITAS HASANUDDIN GEL. 114
+ TAHUN 2025 yang ditempatkan di Desa Parigi. Kami berkomitmen untuk turut berkontribusi dalam pembangunan desa dan pemberdayaan masyarakat melalui pemanfaatan teknologi informasi.
         </p>
 
         <!-- Daftar Anggota -->

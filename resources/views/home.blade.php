@@ -2,7 +2,9 @@
 
 @section('content')
 <!-- Hero Section -->
-<div id="heroSlider" class="relative isolate px-6 pt-32 lg:px-8 bg-cover bg-center bg-no-repeat transition-all duration-1000 h-[80vh]">
+<div id="heroSlider"
+     class="relative isolate px-6 pt-32 lg:px-8 bg-cover bg-center bg-no-repeat transition-all duration-1000 h-[90vh]"
+     style="background-image: url('/images/slider3.jpg');">
   <div class="absolute inset-0 bg-black/40 z-10"></div>
   <div class="relative z-20 flex flex-col justify-center items-center h-full text-center text-white">
     <h1 class="text-4xl md:text-6xl font-bold tracking-tight drop-shadow-md">Desa Parigi</h1>
@@ -16,14 +18,20 @@
     <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Profil Desa</h2>
 
     <!-- Deskripsi -->
-    <div class="mb-10">
+    <div class="mb-10" data-aos="fade-up"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
       <p class="text-gray-700 text-lg leading-relaxed text-center">
         Parigi, mandiri membangun masyarakat dengan meningkatkan mutu pendidikan formal dan non formal, terutama ilmu pengetahuan masyarakat berbasis pada usaha-usaha pertanian, perkebunan, peternakan, dan perikanan dengan mengelola lahan secara intensif. Ditunjang oleh infrastruktur jalan yang memadai, Desa Parigi menuju desa yang SEJAHTERA, AMAN, TENTRAM, BERSIH, SEHAT, dan ASRI.
       </p>
     </div>
 
 <!-- Peta Desa Parigi -->
-<div class="relative mb-16">
+<div class="relative mb-16" data-aos="fade-up"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
   <h3 class="text-2xl font-semibold text-center text-sky-800 mb-6">Peta Lokasi Desa Parigi</h3>
 
   <div class="relative w-full max-w-2xl h-[300px] mx-auto rounded-xl overflow-hidden shadow-lg ring-1 ring-gray-200">
@@ -41,7 +49,12 @@
 
 
     <!-- Visi dan Misi (berdampingan) -->
-    <div class="grid md:grid-cols-2 gap-10">
+    <div class="grid md:grid-cols-2 gap-10"
+     data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
+
       <!-- Visi -->
       <div class="bg-sky-200 p-6 rounded-2xl shadow-md space-y-4">
         <h3 class="text-2xl font-bold text-sky-800">Visi</h3>
@@ -138,8 +151,10 @@
 <script>
   const images = [
     '/images/slider4.jpg',
-    '/images/slider2.jpg',
-    '/images/slider3.jpg'
+    '/images/slider3.jpg',
+    '/images/slider6.jpg',
+    '/images/slider7.jpg',
+    '/images/slider8.jpg'
   ];
   let currentIndex = 0;
   const hero = document.getElementById('heroSlider');

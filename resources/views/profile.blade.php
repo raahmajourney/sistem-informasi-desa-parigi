@@ -2,43 +2,62 @@
 
 @section('content')
 
-<section class="bg-white py-20 px-6 lg:px-6">
+<section class="bg-white py-20 px-6 lg:px-6 text-sky-800 relative ">
+<!-- Informasi Kepala Desa -->
+<div class="max-w-4xl mx-auto text-center" data-aos="zoom-in" data-aos-delay="150">
+  <h2 class="text-2xl font-semibold mb-8">Struktur Organisasi Desa Parigi</h2>
 
-<!-- Informasi Kepala Desa  -->
-
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl font-semibold mb-8">Struktur Organisasi Desa Parigi</h2>
-
-        <div class="flex justify-center">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden w-64 mx-4">
-                <div class="flex items-center justify-center h-60 bg-gray-200">
-                    <i class="fas fa-user-tie text-7xl text-gray-500"></i>
-                </div>
-                <div class="bg-sky-700 text-white py-4 px-6 text-center">
-                    <h3 class="text-lg font-bold uppercase">Ismail, S.Sos., M.Si</h3>
-                    <p class="text-sm mt-1">Kepala Desa</p>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden w-64">
-                <div class="flex items-center justify-center h-60 bg-gray-200">
-                    <i class="fas fa-user-tie text-7xl text-gray-500"></i>
-                </div>
-                <div class="bg-sky-700 text-white py-4 px-6 text-center">
-                    <h3 class="text-lg font-bold uppercase">Hizbullah Ardan</h3>
-                    <p class="text-sm mt-1">Sekretaris Desa</p>
-                </div>
-            </div>
-        </div>
+  <div class="flex flex-wrap justify-center gap-6">
+    <!-- Card 1 - Kepala Desa -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full sm:w-64" data-aos="zoom-in" data-aos-delay="150">
+      <div class="flex items-center justify-center h-60 bg-gray-200">
+        <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png"
+             alt="Foto Kepala Desa"
+             class="h-full object-cover" />
+      </div>
+      <div class="bg-sky-700 text-white py-4 px-6 text-center">
+        <h3 class="text-lg font-bold uppercase">Ismail, S.Sos., M.Si</h3>
+        <p class="text-sm mt-1">Kepala Desa</p>
+      </div>
     </div>
+
+    <!-- Card 2 - Sekretaris Desa -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full sm:w-64 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="150">
+      <div class="flex items-center justify-center h-60 bg-gray-200 w-full">
+        <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png"
+             alt="Foto Sekretaris Desa"
+             class="h-full object-cover" />
+      </div>
+      <div class="bg-sky-700 text-white py-4 px-6 text-center w-full">
+        <h3 class="text-lg font-bold uppercase">Hizbullah Ardan</h3>
+        <p class="text-sm mt-1">Sekretaris Desa</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Tombol Struktur Lengkap di sebelah kanan bawah -->
+<div class="absolute right-12 bottom-8" data-aos="zoom-in" data-aos-delay="150">
+  <a href="{{ route('structure') }}"
+    class=" hover:bg-sky-400 text-sky-900 font-semibold py-2 px-4 rounded shadow">
+    Struktur Lengkap
+  </a>
+</div>
+
 </section>
+
+
 
 
 <section class="bg-sky-50 py-12 px-6 lg:px-16">
   <div class="max-w-6xl mx-auto">
     
     <!-- Bagian H2 + H3 dan Gambar -->
-    <div class="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-10 mb-12">
+    <div class="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-10 mb-12"  data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
       
       <!-- Judul & Deskripsi -->
       <div class="lg:w-1/2 text-center lg:text-left">
@@ -58,7 +77,10 @@
     </div>
 
     <!-- Chart & Keterangan -->
-    <div class="p-6 rounded-lg mt-12 shadow">
+    <div class="p-6 rounded-lg mt-12 shadow"  data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
       <h2 class="text-2xl font-bold text-sky-700 mb-6">Berdasarkan Dusun</h2>
       <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
 
@@ -85,107 +107,121 @@
 
 
 
-<section class="py-12 px-6 lg:px-16">
-  <h2 class="text-3xl font-bold text-sky-700 text-center mb-10">Piramida Penduduk Berdasarkan Umur & Jenis Kelamin</h2>
+<section class="py-12 px-6 lg:px-16" data-aos="zoom-in"
+         data-aos-delay="200"
+         data-aos-duration="1000"
+         data-aos-easing="ease-in-out">
+  <h2 class="text-3xl font-bold text-sky-700 text-center mb-10">
+    Piramida Penduduk Berdasarkan Umur & Jenis Kelamin
+  </h2>
 
-  <div class="max-w-4xl mx-auto">
-    <canvas id="piramidaChart" class="!max-h-[500px]"></canvas>
+  <!-- Responsive Chart Container -->
+  <div class="w-full overflow-x-auto">
+    <div class="min-w-[350px] sm:min-w-full max-w-4xl mx-auto">
+      <canvas id="piramidaChart" class="!h-[400px] w-full"></canvas>
+    </div>
   </div>
 </section>
 
 <!-- Chart.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <script>
-    const ctx = document.getElementById('piramidaChart').getContext('2d');
+<!-- Chart Config -->
+<script>
+  const ctx = document.getElementById('piramidaChart').getContext('2d');
 
-    const data = {
-      labels: [
-        '0 – 6 TAHUN',
-        '7 – 19 TAHUN',
-        '20 – 34 TAHUN',
-        '35 – 49 TAHUN',
-        '50 – 59 TAHUN',
-        '60 – 69 TAHUN',
-        '>70 TAHUN'
-      ],
-      datasets: [
-        {
-          label: 'Laki-laki',
-          data: [-268, -441, -513, -491, -329, -266, -147],
-          backgroundColor: '#0369a1' // sky-700
-        },
-        {
-          label: 'Perempuan',
-          data: [283, 385, 487, 511, 326, 264, 170],
-          backgroundColor: '#38bdf8' // sky-400
-        }
-      ]
-    };
+  const data = {
+    labels: [
+      '0 – 6 TAHUN',
+      '7 – 19 TAHUN',
+      '20 – 34 TAHUN',
+      '35 – 49 TAHUN',
+      '50 – 59 TAHUN',
+      '60 – 69 TAHUN',
+      '>70 TAHUN'
+    ],
+    datasets: [
+      {
+        label: 'Laki-laki',
+        data: [-268, -441, -513, -491, -329, -266, -147],
+        backgroundColor: '#0369a1' // sky-700
+      },
+      {
+        label: 'Perempuan',
+        data: [283, 385, 487, 511, 326, 264, 170],
+        backgroundColor: '#38bdf8' // sky-400
+      }
+    ]
+  };
 
-    const config = {
-      type: 'bar',
-      data: data,
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              color: '#075985', // sky-800
-              font: {
-                size: 14,
-                weight: 'bold'
-              }
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            color: '#075985',
+            font: {
+              size: 14,
+              weight: 'bold'
             }
-          },
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                const val = Math.abs(context.raw);
-                return `${context.dataset.label}: ${val.toLocaleString()}`;
-              }
-            }
-          },
+          }
         },
-        scales: {
-          x: {
-            stacked: true,
-            ticks: {
-              callback: function(value) {
-                return Math.abs(value);
-              },
-              color: '#075985' // sky-800
-            },
-            title: {
-              display: true,
-              text: 'Jumlah Penduduk',
-              color: '#075985', // sky-800
-              font: { size: 14, weight: 'bold' }
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              const val = Math.abs(context.raw);
+              return `${context.dataset.label}: ${val.toLocaleString()}`;
             }
+          }
+        },
+      },
+      scales: {
+        x: {
+          stacked: true,
+          ticks: {
+            callback: function (value) {
+              return Math.abs(value);
+            },
+            color: '#075985'
           },
-          y: {
-            stacked: true,
-            ticks: {
-              color: '#075985' // sky-800
-            },
-            title: {
-              display: true,
-              text: 'Kelompok Umur',
-              color: '#075985', // sky-800
-              font: { size: 14, weight: 'bold' }
-            }
+          title: {
+            display: true,
+            text: 'Jumlah Penduduk',
+            color: '#075985',
+            font: { size: 14, weight: 'bold' }
+          }
+        },
+        y: {
+          stacked: true,
+          ticks: {
+            color: '#075985'
+          },
+          title: {
+            display: true,
+            text: 'Kelompok Umur',
+            color: '#075985',
+            font: { size: 14, weight: 'bold' }
           }
         }
       }
-    };
+    }
+  };
 
-    new Chart(ctx, config);
-  </script>
+  new Chart(ctx, config);
+</script>
+
 
 <!-- Sarana dan prasaran -->
-<section class="py-10 px-4 bg-sky-50">
+<section class="py-10 px-4 bg-sky-50" data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
   <h2 class="text-2xl font-bold text-sky-700 mb-10 text-center">SARANA & PRASARANA</h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-7xl mx-auto">
@@ -251,7 +287,14 @@
 
 
 <!--tingkat pendidikan -->
-<canvas id="pendidikanChart" class="w-full max-w-3xl mx-auto my-8"></canvas>
+<h2 class="text-2xl font-bold text-sky-700 mb-10 text-center py-6 px-2" data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">Tingkat Pendidikan</h2>
+<canvas id="pendidikanChart" class="w-full max-w-3xl mx-auto my-8" data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out"></canvas>
 
 <script>
   const ctxPendidikan = document.getElementById('pendidikanChart').getContext('2d');
@@ -325,7 +368,10 @@
 </script>
 
 
-<section class="bg-sky-10 py-12 px-6 lg:px-16">
+<section class="bg-sky-10 py-12 px-6 lg:px-16" data-aos="zoom-in"
+     data-aos-delay="200"
+     data-aos-duration="1000"
+     data-aos-easing="ease-in-out">
   <h2 class="text-3xl font-bold text-sky-700 mb-6">Berdasarkan Pekerjaan</h2>
 
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">

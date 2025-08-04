@@ -23,6 +23,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('about', function () { return view('about'); })->name('about');
 
+Route::get('structure', function () { return view('structure'); })->name('structure');
 
 Route::get('products', function () { return view('products'); })->name('products');
 

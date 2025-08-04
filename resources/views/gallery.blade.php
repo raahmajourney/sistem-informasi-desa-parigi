@@ -20,11 +20,30 @@
                                 <source src="{{ asset('storage/' . $item->file_path) }}" type="video/mp4">
                                 Browser Anda tidak mendukung pemutar video.
                             </video>
+
                         @elseif ($item->video_url)
+                        @php
+                            $youtubeId = null;
+                            preg_match('/(?:youtu\.be\/|v=)([^\&\?\/]+)/', $item->video_url, $matches);
+                            $youtubeId = $matches[1] ?? null;
+                        @endphp
+
+                        @if ($youtubeId)
                             <div class="relative w-full h-60 bg-black">
-                                <iframe class="w-full h-full" src="{{ $item->video_url }}" frameborder="0" allowfullscreen></iframe>
+                                <iframe 
+                                    class="w-full h-full"
+                                    src="https://www.youtube.com/embed/{{ $youtubeId }}"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen>
+                                </iframe>
                             </div>
+                        @else
+                            <p class="text-sm text-red-500 px-4 py-2">Link video tidak valid</p>
                         @endif
+                    @endif
+
+
                     @endif
 
                     <div class="p-4">

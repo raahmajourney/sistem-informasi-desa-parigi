@@ -42,6 +42,9 @@
   <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
+    <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -126,13 +129,19 @@
   <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
     
     <!-- Logo & Info Desa -->
-    <div>
-      <h3 class="text-2xl font-bold mb-4">Desa Parigi</h3>
-      <p class="text-sm leading-relaxed">
-        Tinggimoncong, Kabupaten Gowa<br/>
-        Sulawesi Selatan, Indonesia<br/>
-        Kode Pos:  92174
-      </p>
+    <div class="flex items-center gap-4 mb-8">
+      <!-- Logo -->
+      <img class="h-20 w-auto" src="/images/logo.png" alt="Parigi" />
+
+      <!-- Info Desa -->
+      <div>
+        <h3 class="text-2xl font-bold mb-1">Desa Parigi</h3>
+        <p class="text-sm leading-relaxed">
+          Tinggimoncong, Kabupaten Gowa<br/>
+          Sulawesi Selatan, Indonesia<br/>
+          Kode Pos: 92174
+        </p>
+      </div>
     </div>
 
     <!-- Navigasi -->
@@ -146,7 +155,6 @@
         <li><a href="{{ route('gallery') }}" class="hover:underline">Gallery Desa</a></li>
         <li><a href="{{ route('education') }}" class="hover:underline">Edukasi</a></li>
         <li><a href="{{ route('about') }}" class="hover:underline">Tentang</a></li>
-        <li><a href="{{ route('login') }}" class="hover:underline">Dashboard Admin</a></li>
       </ul>
     </div>
 
@@ -199,5 +207,16 @@
 
 
 @stack('scripts')
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+  once: true,
+  duration: 1000, // durasi 1 detik
+  easing: 'ease-in-out', // transisi halus
+});
+</script>
+
 </body>
 </html>
