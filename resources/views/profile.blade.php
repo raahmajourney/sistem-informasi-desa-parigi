@@ -11,7 +11,7 @@
     <!-- Card 1 - Kepala Desa -->
     <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full sm:w-64" data-aos="zoom-in" data-aos-delay="150">
       <div class="flex items-center justify-center h-60 bg-gray-200">
-        <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png"
+        <img src="/images/pakde.png"
              alt="Foto Kepala Desa"
              class="h-full object-cover" />
       </div>
@@ -24,7 +24,7 @@
     <!-- Card 2 - Sekretaris Desa -->
     <div class="bg-white rounded-xl shadow-lg overflow-hidden w-full sm:w-64 flex flex-col items-center" data-aos="zoom-in" data-aos-delay="150">
       <div class="flex items-center justify-center h-60 bg-gray-200 w-full">
-        <img src="https://cdn.digitaldesa.com/statics/profil-v2/assets/fallback-B6dzNJxy.png"
+        <img src="/images/sekdes.png"
              alt="Foto Sekretaris Desa"
              class="h-full object-cover" />
       </div>
@@ -77,30 +77,34 @@
     </div>
 
     <!-- Chart & Keterangan -->
-    <div class="p-6 rounded-lg mt-12 shadow"  data-aos="zoom-in"
+   <div class="p-6 rounded-lg mt-12 shadow bg-white"
+     data-aos="zoom-in"
      data-aos-delay="200"
      data-aos-duration="1000"
      data-aos-easing="ease-in-out">
-      <h2 class="text-2xl font-bold text-sky-700 mb-6">Berdasarkan Dusun</h2>
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
 
-        <!-- Chart Canvas -->
-        <div class="w-72 md:w-100">
-          <canvas id="dusunChart"></canvas>
-        </div>
+  <h2 class="text-2xl font-bold text-sky-700 mb-6 text-center lg:text-left">Berdasarkan Dusun</h2>
 
-        <!-- Keterangan -->
-        <div class="w-full lg:w-1/3">
-          <h3 class="text-lg font-bold mb-4">Keterangan:</h3>
-          <ul class="space-y-2 text-black text-base">
-            <li><strong>PANGAJIANG:</strong> 1.475 Jiwa</li>
-            <li><strong>SALUTTOWA:</strong> 2.152 Jiwa</li>
-            <li><strong>ASANA:</strong> 1.254 Jiwa</li>
-          </ul>
-        </div>
+  <div class="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10">
 
-      </div>
+    <!-- Chart Canvas -->
+    <div class="w-full max-w-md mx-auto lg:mx-0">
+      <canvas id="dusunChart" class="w-full h-auto"></canvas>
     </div>
+
+    <!-- Keterangan -->
+    <div class="w-full lg:w-1/2 xl:w-1/3">
+      <h3 class="text-lg font-bold mb-4">Keterangan:</h3>
+      <ul class="space-y-2 text-black text-base">
+        <li><strong>PANGAJIANG:</strong> 1.475 Jiwa</li>
+        <li><strong>SALUTTOWA:</strong> 2.152 Jiwa</li>
+        <li><strong>ASANA:</strong> 1.254 Jiwa</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
 
   </div>
 </section>

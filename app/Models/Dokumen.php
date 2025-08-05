@@ -10,7 +10,7 @@ class Dokumen extends Model
      protected $fillable = [
         'title',
         'description',
-        'file_path',
+        'form_link',
         'created_by',
     ];
 }
